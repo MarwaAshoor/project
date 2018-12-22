@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+  <div style=" background-color: White;">
+    <ion-list>
+      <ion-item style='text-align: center'>
+        <img  height="200" width="200" src="../../assets/imgs/profile.png"/>
+      </ion-item>
+      <form [formGroup]="profileForm" (ngSubmit)="update(profileForm.value)">
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-input [(ngModel)]="user.name" formControlName="name" ></ion-input>
+      </ion-item>
+
+        <ion-item *ngIf="profileForm.controls['name'].hasError('required') && profileForm.controls['name'].touched">
+                <p text-wrap style="color: red">Field Name is required!</p></ion-item>
+                <ion-item *ngIf="profileForm.controls['name'].hasError('pattern') && profileForm.controls['name'].touched">
+                    <p text-wrap style="color: red">Only small and capital letters are allowed!</p></ion-item> 
+                <ion-item *ngIf="profileForm.controls['name'].hasError('minlength') && profileForm.controls['name'].touched">
+                    <p text-wrap style="color: red">Minimum Name length is 3!</p></ion-item>
+    
+
+      <ion-item>
+        <ion-label>CPR:</ion-label>
+        <ion-input [(ngModel)]="user.CPR" formControlName="CPR" type="number"></ion-input>
+      
+      </ion-item>
+
+
+     <ion-item *ngIf="profileForm.controls['CPR'].hasError('required') && profileForm.controls['CPR'].touched">
+        <p text-wrap style="color: red">Field CPR is required!</p></ion-item>
+        <ion-item text-wrap *ngIf="profileForm.controls['CPR'].hasError('minlength') && profileForm.controls['CPR'].touched">
+            <p text-wrap style="color: red">Minimum CPR length is 9!</p></ion-item>
+        
+        <ion-item *ngIf="profileForm.controls['CPR'].hasError('maxlength') && profileForm.controls['CPR'].touched">
+            <p text-wrap style="color: red">Maximum CPR length is 9!</p></ion-item>
+
+      <ion-item>
+        <ion-label>Email: </ion-label>
+        <ion-input [(ngModel)]="user.email" formControlName="email" type="email"></ion-input>
+        
+      </ion-item> 
+
+
+      <ion-item *ngIf="profileForm.controls['email'].hasError('required') && profileForm.controls['email'].touched">
+        <p text-wrap style="color: red">Field email is required!</p></ion-item>
+        <ion-item *ngIf="profileForm.controls['email'].hasError('pattern') && profileForm.controls['email'].touched">
+            <p text-wrap style="color: red">Your email is in invalid format. Your email should look something like this: example@example.com</p></ion-item>                     
+        <ion-item *ngIf="profileForm.controls['email'].hasError('maxlength') && profileForm.controls['email'].touched">
+            <p text-wrap style="color: red">Maximum email length is 50!</p></ion-item>
+
+      <ion-item>
+        <ion-label>Telephone:</ion-label>
+        <ion-input [(ngModel)]="user.tel" formControlName="tel"  type="number"></ion-input>
+        
+      </ion-item>
+
+      
+
+     <ion-item *ngIf="profileForm.controls['tel'].hasError('required') && profileForm.controls['tel'].touched">
+        <p text-wrap style="color: red">Field telephone number is required!</p></ion-item>
+        <ion-item *ngIf="profileForm.controls['tel'].hasError('pattern') && profileForm.controls['tel'].touched">
+            <p text-wrap style="color: red">Only numbers and "+" character are allowed! Ex: 36001996.</p></ion-item> 
+        <ion-item *ngIf="profileForm.controls['tel'].hasError('minlength') && profileForm.controls['tel'].touched">
+            <p text-wrap style="color: red">Minimum telephone number length is 8!</p></ion-item>
+        <ion-item *ngIf="profileForm.controls['tel'].hasError('maxlength') && profileForm.controls['tel'].touched">
+            <p text-wrap style="color: red">Maximum telephone number length is 8!</p></ion-item>
+
+      
+
+      <ion-item>
+        <ion-label>Pass: </ion-label>
+        <ion-input [(ngModel)]="user.pass" formControlName="pass" type="password" ></ion-input>
+        
+      </ion-item>
+
+    <ion-item *ngIf="profileForm.controls['pass'].hasError('required') && profileForm.controls['pass'].touched">
+        <p text-wrap style="color: red">Field password is required!</p></ion-item>
+        <ion-item *ngIf="profileForm.controls['pass'].hasError('pattern') && profileForm.controls['pass'].touched">
+            <p text-wrap style="color: red">Only small,capital letters, - and _ characters are allowed!</p></ion-item> 
+        <ion-item *ngIf="profileForm.controls['pass'].hasError('minlength') && profileForm.controls['pass'].touched">
+            <p text-wrap style="color: red">Minimum password length is 5!</p></ion-item>
+        <ion-item *ngIf="profileForm.controls['pass'].hasError('maxlength') && profileForm.controls['pass'].touched">
+            <p text-wrap style="color: red">Maximum password length is 20!</p></ion-item>
+    
+      
+        <button ion-button block >Update</button>
+      
+      
+      
+  </form></ion-list>
+  </div>
+</ion-content>

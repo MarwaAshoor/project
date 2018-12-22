@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+  <div style=" background-color: White;">
+  <h1 style="font-family:fantasy; font-size: 30px; text-align: center">Welcome to iHospital</h1>
+  
+  <p style="text-align: center">
+    Select What do you want to browse!
+  </p></div>
+  <ion-card style="border-radius: 20px">
+    <img  src="../../assets/imgs/1.jpg"/>
+    <div style="text-align: center" class="card-subtitle"><button ion-button clear (tap)="gotohos()" >Browse Hospitals</button></div>
+
+  </ion-card>
+
+  <ion-card style="border-radius: 20px">
+    <img src="../../assets/imgs/3.jpg"/>
+    <div style="text-align: center" class="card-subtitle"><button ion-button clear (tap)="gotodoc()" >Browse Doctors</button></div>
+  </ion-card>
+
+  <ion-card style="border-radius: 20px">
+    <img src="../../assets/imgs/2.jpg"/>
+    <div style="text-align: center" class="card-subtitle"><button ion-button clear (tap)="gotoclin()"  >Browse Clinics</button></div>
+  </ion-card>
+  
+  <ion-card style="border-radius: 20px" *ngIf='isDoc'>
+    <img src="../../assets/imgs/4.jpg"/>
+    <div style="text-align: center" class="card-subtitle"><button ion-button clear (tap)="gotopat()" >Browse Patients</button></div>
+  </ion-card>
+</ion-content>

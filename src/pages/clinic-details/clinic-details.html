@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Clinic Detail</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+    <div style=" background-color: White; border-radius: 20px; text-align: center">
+      <img  src="{{data.img}}" height="50" width="120"/> 
+      <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-align: center">{{data.name}}</h2>
+      <p><ion-icon name="navigate"> {{data.loc}}</ion-icon></p>
+      <p><ion-icon name="mail"> {{data.email}} </ion-icon></p>
+      <p><ion-icon name="call">{{data.tel}}</ion-icon></p>
+    </div>
+
+    <div style=" background-color: White; border-radius: 20px">
+        <ion-label>Add comment:</ion-label>
+        <form [formGroup]="commentForm" (ngSubmit)="addComment(commentForm.value)">
+          <ion-textarea formControlName="comment"></ion-textarea>
+          <button ion-button type="submit">Add Comment</button>
+
+        </form> </div>
+
+        <div style=" background-color: White; border-radius: 20px">
+
+          <ion-label>Comments:</ion-label><br/>
+        
+        <ion-list>
+          <ion-item *ngFor="let c of commentsList">
+            <p text-wrap > {{c.comment}}</p>
+          </ion-item>
+        </ion-list>
+          
+        
+      </div>
+</ion-content>

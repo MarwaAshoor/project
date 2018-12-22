@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hospitals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+
+  <ion-searchbar [(ngModel)]="searchItem" (ionInput)="getItems()"></ion-searchbar>
+
+    <ion-card *ngFor="let h of Hospitals">
+      <img src="{{h.img}}">
+      <button ion-button clear block (click)="openP(h)"><ion-icon> </ion-icon><b style="color: black; font-size: 14px; font-family: Verdana, Geneva, Tahoma, sans-serif">{{h.name}} </b></button>
+    </ion-card>
+
+  
+
+
+</ion-content>

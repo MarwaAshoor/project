@@ -1,0 +1,156 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sign-Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: aqua">
+    <div style=" background-color: White; text-align: center">
+    <form [formGroup]="loginform" (ngSubmit)="signup(loginform.value)">
+        <ion-list>
+            <ion-item>
+              <ion-label>Name:</ion-label>
+              <ion-input formControlName="name" >
+              </ion-input>
+            </ion-item>
+        
+            <ion-item *ngIf="loginform.controls['name'].hasError('required') && loginform.controls['name'].touched">
+                <p text-wrap style="color: red">Field Name is required!</p></ion-item>
+                <ion-item *ngIf="loginform.controls['name'].hasError('pattern') && loginform.controls['name'].touched">
+                    <p text-wrap style="color: red">Only small and capital letters are allowed!</p></ion-item> 
+                <ion-item *ngIf="loginform.controls['name'].hasError('minlength') && loginform.controls['name'].touched">
+                    <p text-wrap style="color: red">Minimum Name length is 3!</p></ion-item>
+                
+
+                      <ion-item>
+                        <ion-label>CPR:</ion-label>
+                        <ion-input type="number" formControlName="CPR" >
+                        </ion-input>
+                      </ion-item>
+        
+                      <ion-item *ngIf="loginform.controls['CPR'].hasError('required') && loginform.controls['CPR'].touched">
+                          <p text-wrap style="color: red">Field CPR is required!</p></ion-item>
+                          <ion-item text-wrap *ngIf="loginform.controls['CPR'].hasError('minlength') && loginform.controls['CPR'].touched">
+                              <p text-wrap style="color: red">Minimum CPR length is 9!</p></ion-item>
+                          
+                          <ion-item *ngIf="loginform.controls['CPR'].hasError('maxlength') && loginform.controls['CPR'].touched">
+                              <p text-wrap style="color: red">Maximum CPR length is 9!</p></ion-item>
+        
+
+              <ion-item>
+                  <ion-label>Email:</ion-label>
+                  <ion-input formControlName="email" type="email">
+                  </ion-input>
+                </ion-item>
+
+                  <ion-item *ngIf="loginform.controls['email'].hasError('required') && loginform.controls['email'].touched">
+                      <p text-wrap style="color: red">Field email is required!</p></ion-item>
+                      <ion-item *ngIf="loginform.controls['email'].hasError('pattern') && loginform.controls['email'].touched">
+                          <p text-wrap style="color: red">Your email is in invalid format. Your email should look something like this: example@example.com</p></ion-item>                     
+                      <ion-item *ngIf="loginform.controls['email'].hasError('maxlength') && loginform.controls['email'].touched">
+                          <p text-wrap style="color: red">Maximum email length is 50!</p></ion-item>
+                  
+
+                  <ion-item>
+                      <ion-label>Password:</ion-label>
+                      <ion-input formControlName="pass" type="Password">
+                      </ion-input>
+                    </ion-item>
+
+                    <ion-item *ngIf="loginform.controls['pass'].hasError('required') && loginform.controls['pass'].touched">
+                        <p text-wrap style="color: red">Field password is required!</p></ion-item>
+                        <ion-item *ngIf="loginform.controls['pass'].hasError('pattern') && loginform.controls['pass'].touched">
+                            <p text-wrap style="color: red">Only small,capital letters, - and _ characters are allowed!</p></ion-item> 
+                        <ion-item *ngIf="loginform.controls['pass'].hasError('minlength') && loginform.controls['pass'].touched">
+                            <p text-wrap style="color: red">Minimum password length is 5!</p></ion-item>
+                        <ion-item *ngIf="loginform.controls['pass'].hasError('maxlength') && loginform.controls['pass'].touched">
+                            <p text-wrap style="color: red">Maximum password length is 20!</p></ion-item>
+
+                            <ion-item>
+                                <ion-label>Telephone Number:</ion-label>
+                                <ion-input formControlName="tel" type="number">
+                                </ion-input>
+                              </ion-item>
+          
+                              <ion-item *ngIf="loginform.controls['tel'].hasError('required') && loginform.controls['tel'].touched">
+                                  <p text-wrap style="color: red">Field telephone number is required!</p></ion-item>
+                                  <ion-item *ngIf="loginform.controls['tel'].hasError('pattern') && loginform.controls['tel'].touched">
+                                      <p text-wrap style="color: red">Only numbers and "+" character are allowed! Ex: 36001996.</p></ion-item> 
+                                  <ion-item *ngIf="loginform.controls['tel'].hasError('minlength') && loginform.controls['tel'].touched">
+                                      <p text-wrap style="color: red">Minimum telephone number length is 8!</p></ion-item>
+                                  <ion-item *ngIf="loginform.controls['tel'].hasError('maxlength') && loginform.controls['tel'].touched">
+                                      <p text-wrap style="color: red">Maximum telephone number length is 8!</p></ion-item>
+
+        </ion-list>
+                    <ion-list radio-group  >
+                        <br/>
+                        <ion-label>User Type:</ion-label>
+                        
+                            <ion-item>
+                              <ion-label>Patient</ion-label>    
+                              <ion-radio checked="true"   value="Patient" (ionSelect)="isPat()"></ion-radio>
+                            </ion-item>
+                          
+                            <ion-item>
+                              <ion-label>Doctor</ion-label>
+                              <ion-radio   value="Doctor"  (ionSelect)="isDoc()"></ion-radio>
+                            </ion-item> <br/></ion-list>
+                            
+                            <ion-list radio-group *ngIf='isDocOrPat' >
+                                <br/>
+                                <ion-label>Place of Work:</ion-label>
+                                
+                                    <ion-item>
+                                      <ion-label>Hospital</ion-label>    
+                                      <ion-radio checked="true"   value="Hospital" (ionSelect)="isHos()"></ion-radio>
+                                    </ion-item>
+                                  
+                                    <ion-item>
+                                      <ion-label>Clinic</ion-label>
+                                      <ion-radio   value="Clinic"  (ionSelect)="isCli()"></ion-radio>
+                                    </ion-item> <br/></ion-list>
+                          
+                    <ion-list *ngIf='isHosp && isDocOrPat'>
+                    
+                    
+                    <ion-item  >
+                        <ion-label>Hospital:</ion-label>
+                        <ion-select formControlName="hos" >
+                            <ion-option *ngFor="let h of Hospital" value="{{h.name}}">{{h.name}}</ion-option>
+                        </ion-select>
+                      </ion-item>
+                        
+                 <ion-item>
+                        <ion-label>Department: </ion-label>
+                        <ion-select formControlName="dep" >
+                                <ion-option *ngFor="let d of Department" value="{{d.name}}">{{d.name}}</ion-option>
+                            </ion-select>
+                    </ion-item>
+                    </ion-list>
+
+                    <ion-list *ngIf='isClin && isDocOrPat'> 
+                    <ion-item>
+                            
+                          <ion-label>Clinic:</ion-label>
+                          <ion-select formControlName="clinic" >
+                            <ion-option *ngFor="let c of Clinic" value="{{c.name}}">{{c.name}}</ion-option>
+                          </ion-select>
+                        </ion-item>  
+                </ion-list>
+          
+            <button ion-button block type='submit'>Sign-up</button>
+          
+          
+          
+      </form>
+      </div>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Report Incident</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+    <div style="background-color: white; border-radius: 20px">
+      
+        <ion-list>
+          <ion-item>
+            <ion-label>Message:</ion-label>
+          <ion-item>
+            <ion-textarea [(ngModel)]="msg"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="file"id="file" [(ngModel)]='filename' (change)="HandleFileSelect($event)"/>
+            <button ion-button (click)="store()">Upload</button>
+            <button ion-button (click)="display()">Display</button>
+          </ion-item>
+
+          <ion-item>
+              <img src="{{imgsource}}">
+          </ion-item>
+            
+          
+          
+          
+        </ion-list>
+
+        <button ion-button block (click)="addR()">Send Report</button>
+
+      
+    </div>
+</ion-content>

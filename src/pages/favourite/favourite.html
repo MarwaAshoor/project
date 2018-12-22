@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Favoutites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+  <ion-list>
+
+  
+  <ion-item-sliding *ngFor="let f of fav">
+      <ion-item (click)="openP(f)"><ion-icon> </ion-icon>
+        <b text-wrap style="color: black; font-size: 14px; font-family: Verdana, Geneva, Tahoma, sans-serif">{{f.name}} </b>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(f.$key)">
+          <ion-icon name='trash' ></ion-icon>
+        </button>
+
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+</ion-content>

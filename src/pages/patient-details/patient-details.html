@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Patient Detail</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding style="background-image: url('../../assets/imgs/bk.jpg')">
+    <div style=" background-color: White; border-radius: 20px; text-align: center">
+      <img  src="../../assets/imgs/profile.png" height="100" width="100"/> 
+      <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-align: center">{{data.name}}</h2>
+      <p>{{data.CPR}}</p>
+      <p><ion-icon name="mail"> {{data.email}} </ion-icon></p>
+      <p><ion-icon name="call">{{data.tel}}</ion-icon></p>
+
+      <button ion-button><ion-icon name="trash"></ion-icon>Delete Patient Record</button>
+      
+    </div>
+
+    
+</ion-content>
